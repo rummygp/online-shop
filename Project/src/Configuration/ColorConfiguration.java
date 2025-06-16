@@ -2,7 +2,7 @@ package Configuration;
 
 import java.math.BigDecimal;
 
-public enum ColorConfiguration {
+public enum ColorConfiguration implements HasAdditionalPrice{
     RED("Czerwony", new BigDecimal("0")),
     BLACK("Czarny", new BigDecimal("0")),
     GOLD("Złoty", new BigDecimal("100"));
@@ -19,7 +19,8 @@ public enum ColorConfiguration {
         return label;
     }
 
-    public BigDecimal getPrice() {
+    @Override
+    public BigDecimal getAdditionalPrice() {
         return price;
     }
 }

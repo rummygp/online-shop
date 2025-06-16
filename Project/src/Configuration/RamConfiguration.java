@@ -2,7 +2,7 @@ package Configuration;
 
 import java.math.BigDecimal;
 
-public enum RamConfiguration {
+public enum RamConfiguration implements HasAdditionalPrice{
     GB4(4, new BigDecimal("0")),
     GB8(8, new BigDecimal("200")),
     GB16(16, new BigDecimal("600"));
@@ -19,7 +19,8 @@ public enum RamConfiguration {
         return label;
     }
 
-    public BigDecimal getPrice() {
+    @Override
+    public BigDecimal getAdditionalPrice() {
         return price;
     }
 }

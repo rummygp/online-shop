@@ -2,7 +2,7 @@ package Configuration;
 
 import java.math.BigDecimal;
 
-public enum AdditionalAccessoriesConfiguration {
+public enum AdditionalAccessoriesConfiguration implements HasAdditionalPrice{
     CHARGER("Ładowarka", new BigDecimal("100")),
     CASE("Etui", new BigDecimal("200")),
     HEADPHONES("Słuchawki", new BigDecimal("300"));
@@ -19,7 +19,8 @@ public enum AdditionalAccessoriesConfiguration {
         return label;
     }
 
-    public BigDecimal getPrice() {
+    @Override
+    public BigDecimal getAdditionalPrice() {
         return price;
     }
 }
