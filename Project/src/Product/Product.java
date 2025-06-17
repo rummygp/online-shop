@@ -70,6 +70,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return name + " " + price + "zł\n";
+        return "id: "+ id + " " + name + " " + price + "zł\n";
     }
 }

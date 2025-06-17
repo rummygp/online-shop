@@ -1,8 +1,11 @@
-package Configuration;
+package Configuration.ConfigurationModels;
+
+import Configuration.ConfigurationInterfaces.GetLabel;
+import Configuration.ConfigurationInterfaces.HasAdditionalPrice;
 
 import java.math.BigDecimal;
 
-public enum ColorConfiguration implements HasAdditionalPrice{
+public enum ColorConfiguration implements HasAdditionalPrice, GetLabel {
     RED("Czerwony", new BigDecimal("0")),
     BLACK("Czarny", new BigDecimal("0")),
     GOLD("Złoty", new BigDecimal("100"));
@@ -15,6 +18,7 @@ public enum ColorConfiguration implements HasAdditionalPrice{
         this.price = price;
     }
 
+    @Override
     public String getLabel() {
         return label;
     }

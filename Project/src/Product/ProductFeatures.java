@@ -7,13 +7,13 @@ public enum ProductFeatures {
     BATTERYCAPACITY("Pojemność baterii"),
     ADDITIONALACCRESSORIES("Dodatkowe akcesoria");
 
-    private final String productFeatures;
+    private final String label;
 
-    ProductFeatures(String productFeature) {
-        this.productFeatures = productFeature;
+    ProductFeatures(String label) {
+        this.label = label;
     }
 
-    public String getProductFeatures() {
-        return productFeatures;
+    public String getLabel() {
+        return label;
     }
 }

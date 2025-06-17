@@ -1,4 +1,4 @@
-package Configuration;
+package Configuration.ConfigurationInterfaces;
 
 import java.math.BigDecimal;
 
