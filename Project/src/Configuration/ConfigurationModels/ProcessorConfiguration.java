@@ -1,11 +1,9 @@
 package Configuration.ConfigurationModels;
 
-import Configuration.ConfigurationInterfaces.GetLabel;
-import Configuration.ConfigurationInterfaces.HasAdditionalPrice;
-
+import Configuration.ConfigurationInterfaces.ConfigurableOptions;
 import java.math.BigDecimal;
 
-public enum ProcessorConfiguration implements HasAdditionalPrice, GetLabel {
+public enum ProcessorConfiguration implements ConfigurableOptions {
     I5("Intel Core i5-12600k", new BigDecimal("0")),
     I7("Intel Core i7-14700k", new BigDecimal("500")),
     I9("Intel Core i9-14900k", new BigDecimal("1000"));

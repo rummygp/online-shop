@@ -1,11 +1,10 @@
 package Configuration.ConfigurationModels;
 
-import Configuration.ConfigurationInterfaces.GetLabel;
-import Configuration.ConfigurationInterfaces.HasAdditionalPrice;
+import Configuration.ConfigurationInterfaces.ConfigurableOptions;
 
 import java.math.BigDecimal;
 
-public enum AdditionalAccessoriesConfiguration implements HasAdditionalPrice, GetLabel {
+public enum AdditionalAccessoriesConfiguration implements ConfigurableOptions {
     CHARGER("Ładowarka", new BigDecimal("100")),
     CASE("Etui", new BigDecimal("200")),
     HEADPHONES("Słuchawki", new BigDecimal("300"));

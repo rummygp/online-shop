@@ -2,6 +2,7 @@ package Configuration.ConfigurationInterfaces;
 
 import java.math.BigDecimal;
 
-public interface HasAdditionalPrice {
+public interface ConfigurableOptions {
+    String getLabel();
     BigDecimal getAdditionalPrice();
 }

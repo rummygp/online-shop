@@ -1,14 +1,12 @@
 package Configuration.ConfigurationModels;
 
-import Configuration.ConfigurationInterfaces.GetLabel;
-import Configuration.ConfigurationInterfaces.HasAdditionalPrice;
-
+import Configuration.ConfigurationInterfaces.ConfigurableOptions;
 import java.math.BigDecimal;
 
-public enum BatteryCapacityConfiguration implements HasAdditionalPrice, GetLabel {
-    mAh_4000("4000", new BigDecimal("0")),
-    mAh_5000("5000", new BigDecimal("100")),
-    mAh_6000("6000", new BigDecimal("200"));
+public enum BatteryCapacityConfiguration implements ConfigurableOptions {
+    mAh_4000("4000 mAh", new BigDecimal("0")),
+    mAh_5000("5000 mAh", new BigDecimal("100")),
+    mAh_6000("6000 mAh", new BigDecimal("200"));
 
     private final String label;
     private final BigDecimal price;

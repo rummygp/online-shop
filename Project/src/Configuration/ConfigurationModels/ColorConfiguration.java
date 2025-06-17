@@ -1,11 +1,9 @@
 package Configuration.ConfigurationModels;
 
-import Configuration.ConfigurationInterfaces.GetLabel;
-import Configuration.ConfigurationInterfaces.HasAdditionalPrice;
-
+import Configuration.ConfigurationInterfaces.ConfigurableOptions;
 import java.math.BigDecimal;
 
-public enum ColorConfiguration implements HasAdditionalPrice, GetLabel {
+public enum ColorConfiguration implements ConfigurableOptions {
     RED("Czerwony", new BigDecimal("0")),
     BLACK("Czarny", new BigDecimal("0")),
     GOLD("Złoty", new BigDecimal("100"));

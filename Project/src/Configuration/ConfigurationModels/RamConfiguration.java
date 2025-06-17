@@ -1,11 +1,9 @@
 package Configuration.ConfigurationModels;
 
-import Configuration.ConfigurationInterfaces.GetLabel;
-import Configuration.ConfigurationInterfaces.HasAdditionalPrice;
-
+import Configuration.ConfigurationInterfaces.ConfigurableOptions;
 import java.math.BigDecimal;
 
-public enum RamConfiguration implements HasAdditionalPrice, GetLabel {
+public enum RamConfiguration implements ConfigurableOptions {
     GB4("4 GB", new BigDecimal("0")),
     GB8("8 GB", new BigDecimal("200")),
     GB16("16 GB", new BigDecimal("600"));

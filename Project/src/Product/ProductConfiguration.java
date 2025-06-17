@@ -1,34 +1,32 @@
 package Product;
 
-import Configuration.ConfigurationInterfaces.GetLabel;
-import Configuration.ConfigurationInterfaces.HasAdditionalPrice;
+import Configuration.ConfigurationInterfaces.ConfigurableOptions;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class ProductConfiguration {
     private final Product product;
-    private final Map<ProductFeatures, Enum<?>> selectedOptions;
+    private final Map<ProductFeatures, ConfigurableOptions> selectedOptions;
 
     public ProductConfiguration(Product product) {
         this.product = product;
         this.selectedOptions = new HashMap<>();
     }
 
-    public void selectOption(ProductFeatures feature, Enum<?> value) {
+    public void selectOption(ProductFeatures feature, ConfigurableOptions value) {
         selectedOptions.put(feature, value);
     }
 
     public BigDecimal getFinalPrice() {
-        BigDecimal finalPrice = product.getPrice();
-
-        for (Enum<?> option : selectedOptions.values()) {
-            if (option instanceof HasAdditionalPrice pricedOption) {
-                finalPrice = finalPrice.add(pricedOption.getAdditionalPrice());
-            }
-        } return finalPrice;
+        BigDecimal optionsPrice = selectedOptions.values().stream()
+                .map(ConfigurableOptions::getAdditionalPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        return product.getPrice().add(optionsPrice);
     }
 
     public static ProductConfiguration configureProduct(Product product, Scanner scanner) {
@@ -36,17 +34,16 @@ public class ProductConfiguration {
 
         if (product.getConfigurableFeatures() != null) {
             for (ProductFeatures feature : product.getConfigurableFeatures()) {
-                Class<? extends Enum<?>> enumClass = FeatureOption.getOptionClass(feature);
-                Enum<?>[] options = enumClass.getEnumConstants();
+                Class<? extends ConfigurableOptions> enumClass = FeatureOption.getOptionClass(feature);
+                ConfigurableOptions[] options = enumClass.getEnumConstants();
                 System.out.println("Proszę wybrać: " + feature.getLabel());
 
                 for (int i = 0; i < options.length; i++) {
-                    Enum<?> option = options[i];
-                    String label = ((GetLabel) option).getLabel();
-                    System.out.println((i + 1) + ". " + label);
+                    System.out.println((i + 1) + ". " + options[i].getLabel() + " (" + options[i].getAdditionalPrice() + "zł)");
                 }
+
                 int choice2 = Integer.parseInt(scanner.nextLine());
-                Enum<?> selectedOption = options[choice2 - 1];
+                ConfigurableOptions selectedOption = options[choice2 - 1];
                 config.selectOption(feature, selectedOption);
             }
         }
@@ -58,3 +55,4 @@ public class ProductConfiguration {
         return product.getName() + " " + selectedOptions.values();
     }
 }
+
