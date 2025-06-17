@@ -30,6 +30,7 @@ public class ProductConfiguration {
             }
         } return finalPrice;
     }
+
     public static ProductConfiguration configureProduct(Product product, Scanner scanner) {
         ProductConfiguration config = new ProductConfiguration(product);
 
