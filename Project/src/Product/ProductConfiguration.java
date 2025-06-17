@@ -34,19 +34,21 @@ public class ProductConfiguration {
     public static ProductConfiguration configureProduct(Product product, Scanner scanner) {
         ProductConfiguration config = new ProductConfiguration(product);
 
-        for (ProductFeatures feature : product.getConfigurableFeatures()) {
-            Class<? extends Enum<?>> enumClass = FeatureOption.getOptionClass(feature);
-            Enum<?>[] options = enumClass.getEnumConstants();
-            System.out.println("Proszę wybrać: " + feature.getLabel());
+        if (product.getConfigurableFeatures() != null) {
+            for (ProductFeatures feature : product.getConfigurableFeatures()) {
+                Class<? extends Enum<?>> enumClass = FeatureOption.getOptionClass(feature);
+                Enum<?>[] options = enumClass.getEnumConstants();
+                System.out.println("Proszę wybrać: " + feature.getLabel());
 
-            for (int i = 0; i < options.length; i++) {
-                Enum<?> option = options[i];
-                String label = ((GetLabel) option).getLabel();
-                System.out.println((i + 1) + ". " + label);
+                for (int i = 0; i < options.length; i++) {
+                    Enum<?> option = options[i];
+                    String label = ((GetLabel) option).getLabel();
+                    System.out.println((i + 1) + ". " + label);
+                }
+                int choice2 = Integer.parseInt(scanner.nextLine());
+                Enum<?> selectedOption = options[choice2 - 1];
+                config.selectOption(feature, selectedOption);
             }
-            int choice2 = Integer.parseInt(scanner.nextLine());
-            Enum<?> selectedOption = options[choice2 - 1];
-            config.selectOption(feature, selectedOption);
         }
         return config;
     }
