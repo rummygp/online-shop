@@ -10,15 +10,15 @@ public class Product {
     private final int id;
     private String name;
     private BigDecimal price;
-    private int quanity;
+    private int quantity;
     private ProductType productType;
     private List<ProductFeatures> configurableFeatures;
 
-    public Product(int id, String name, BigDecimal price, int quanity, ProductType productType, List<ProductFeatures> configurableFeatures) {
+    public Product(int id, String name, BigDecimal price, int quantity, ProductType productType, List<ProductFeatures> configurableFeatures) {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.quanity = quanity;
+        this.quantity = quantity;
         this.productType = productType;
         this.configurableFeatures = configurableFeatures;
     }
@@ -44,11 +44,11 @@ public class Product {
     }
 
     public int getQuanity() {
-        return quanity;
+        return quantity;
     }
 
     public void setQuanity(int quanity) {
-        this.quanity = quanity;
+        this.quantity = quanity;
     }
 
     public ProductType getProductType() {

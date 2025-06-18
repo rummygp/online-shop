@@ -3,10 +3,9 @@ package App;
 import Configuration.ConfigurationInterfaces.ConfigurableOptions;
 import Product.Elements.ProductFeatures;
 import Product.Product;
-import Product.ProductConfiguration;
+import Product.ConfiguratedProduct;
 import Product.Storage;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -14,14 +13,13 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Storage storage = new Storage();
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
         while (running) {
             System.out.println(Storage.productsList());
             try {
                 Product selectedProduct = Storage.productsList().get(Integer.parseInt(scanner.nextLine()) - 1);
-                ProductConfiguration config = new ProductConfiguration(selectedProduct);
+                ConfiguratedProduct config = new ConfiguratedProduct(selectedProduct);
 
                 Optional.ofNullable(selectedProduct.getConfigurableFeatures())
                         .ifPresent(features -> {

@@ -8,11 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ProductConfiguration {
+public class ConfiguratedProduct {
     private final Product product;
     private final Map<ProductFeatures, ConfigurableOptions> selectedOptions;
 
-    public ProductConfiguration(Product product) {
+    public ConfiguratedProduct(Product product) {
         this.product = product;
         this.selectedOptions = new HashMap<>();
     }
