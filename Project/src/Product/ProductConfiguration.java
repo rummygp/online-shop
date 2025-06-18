@@ -1,13 +1,12 @@
 package Product;
 
 import Configuration.ConfigurationInterfaces.ConfigurableOptions;
+import Product.Elements.ProductFeatures;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class ProductConfiguration {
     private final Product product;
@@ -29,25 +28,17 @@ public class ProductConfiguration {
         return product.getPrice().add(optionsPrice);
     }
 
-    public static ProductConfiguration configureProduct(Product product, Scanner scanner) {
-        ProductConfiguration config = new ProductConfiguration(product);
+    public List<ConfigurableOptions> getOptionsForFeature(ProductFeatures feature) {
+        Class<? extends ConfigurableOptions> enumClass = FeatureOption.getOptionClass(feature);
+        return List.of(enumClass.getEnumConstants());
+    }
 
-        if (product.getConfigurableFeatures() != null) {
-            for (ProductFeatures feature : product.getConfigurableFeatures()) {
-                Class<? extends ConfigurableOptions> enumClass = FeatureOption.getOptionClass(feature);
-                ConfigurableOptions[] options = enumClass.getEnumConstants();
-                System.out.println("Proszę wybrać: " + feature.getLabel());
+    public Product getProduct() {
+        return product;
+    }
 
-                for (int i = 0; i < options.length; i++) {
-                    System.out.println((i + 1) + ". " + options[i].getLabel() + " (" + options[i].getAdditionalPrice() + "zł)");
-                }
-
-                int choice2 = Integer.parseInt(scanner.nextLine());
-                ConfigurableOptions selectedOption = options[choice2 - 1];
-                config.selectOption(feature, selectedOption);
-            }
-        }
-        return config;
+    public Map<ProductFeatures, ConfigurableOptions> getSelectedOptions() {
+        return selectedOptions;
     }
 
     @Override

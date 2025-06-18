@@ -1,4 +1,4 @@
-package Product;
+package Product.Elements;
 
 public enum ProductFeatures {
     RAM("Pamięć RAM"),

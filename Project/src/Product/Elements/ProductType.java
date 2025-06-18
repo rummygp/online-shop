@@ -1,4 +1,4 @@
-package Product;
+package Product.Elements;
 
 public enum ProductType {
     COMPUTER("Komputer"),
@@ -9,9 +9,5 @@ public enum ProductType {
 
     ProductType(String productType) {
         this.productType = productType;
-    }
-
-    public String getProductType() {
-        return productType;
     }
 }

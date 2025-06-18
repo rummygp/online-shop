@@ -2,6 +2,7 @@ package Product;
 
 import Configuration.ConfigurationInterfaces.ConfigurableOptions;
 import Configuration.ConfigurationModels.*;
+import Product.Elements.ProductFeatures;
 
 import java.util.Map;
 

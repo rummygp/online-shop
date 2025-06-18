@@ -1,17 +1,20 @@
 package Product;
 
+import Product.Elements.ProductFeatures;
+import Product.Elements.ProductType;
+
 import java.math.BigDecimal;
-import java.util.Set;
+import java.util.List;
 
 public class Product {
-    private int id;
+    private final int id;
     private String name;
     private BigDecimal price;
     private int quanity;
     private ProductType productType;
-    private Set<ProductFeatures> configurableFeatures;
+    private List<ProductFeatures> configurableFeatures;
 
-    public Product(int id, String name, BigDecimal price, int quanity, ProductType productType, Set<ProductFeatures> configurableFeatures) {
+    public Product(int id, String name, BigDecimal price, int quanity, ProductType productType, List<ProductFeatures> configurableFeatures) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -22,10 +25,6 @@ public class Product {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -60,11 +59,11 @@ public class Product {
         this.productType = productType;
     }
 
-    public Set<ProductFeatures> getConfigurableFeatures() {
+    public List<ProductFeatures> getConfigurableFeatures() {
         return configurableFeatures;
     }
 
-    public void setConfigurableFeatures(Set<ProductFeatures> configurableFeatures) {
+    public void setConfigurableFeatures(List<ProductFeatures> configurableFeatures) {
         this.configurableFeatures = configurableFeatures;
     }
 
