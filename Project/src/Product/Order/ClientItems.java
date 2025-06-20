@@ -1,4 +1,6 @@
-package Product;
+package Product.Order;
+
+import Product.ConfiguratedProduct;
 
 import java.math.BigDecimal;
 import java.util.Objects;

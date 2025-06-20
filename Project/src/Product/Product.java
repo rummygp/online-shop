@@ -43,12 +43,12 @@ public class Product {
         this.price = price;
     }
 
-    public int getQuanity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuanity(int quanity) {
-        this.quantity = quanity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public ProductType getProductType() {

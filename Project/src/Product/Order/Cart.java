@@ -1,4 +1,6 @@
-package Product;
+package Product.Order;
+
+import Product.ConfiguratedProduct;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -21,7 +23,7 @@ public class Cart {
             throw new IllegalArgumentException("Nie można dodać do koszyka: produkt nie istnieje");
         }
 
-        if (product.getProduct().getQuanity() <= 0) {
+        if (product.getProduct().getQuantity() <= 0) {
             throw new IllegalArgumentException("Brak produktu w magazynie");
         }
         ClientItems newClientItems = new ClientItems(product, quantity);
