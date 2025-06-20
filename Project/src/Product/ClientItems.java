@@ -1,5 +1,6 @@
 package Product;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class ClientItems {
@@ -25,6 +26,11 @@ public class ClientItems {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public BigDecimal getTotalPrice() {
+        BigDecimal finalProductPrice = finalProduct.getFinalPrice();
+        return finalProductPrice.multiply(BigDecimal.valueOf(quantity));
     }
 
     @Override
