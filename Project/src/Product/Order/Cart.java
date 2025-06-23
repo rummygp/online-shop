@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class Cart {
-    List<ClientItems> cartItems;
+    private List<ClientItems> cartItems;
 
     public Cart() {
         this.cartItems = new ArrayList<>();

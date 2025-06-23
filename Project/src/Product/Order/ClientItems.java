@@ -6,8 +6,8 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 public class ClientItems {
-    ConfiguratedProduct finalProduct;
-    int quantity;
+    private ConfiguratedProduct finalProduct;
+    private int quantity;
 
     public ClientItems(ConfiguratedProduct finalProduct, int quantity) {
         this.finalProduct = finalProduct;
