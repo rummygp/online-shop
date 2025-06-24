@@ -4,9 +4,10 @@ import Product.Order.ClientItems;
 import Product.Order.Order;
 
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class InvoiceGenerator {
-    private static int invoiceCounter = 1;
+    private static final AtomicInteger invoiceCounter = new AtomicInteger(1);
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
 
     public String generateInvoice(Order order) {
@@ -14,7 +15,7 @@ public class InvoiceGenerator {
 
 
         invoiceBuilder.append("Faktura nr: FV/")
-                .append(invoiceCounter++)
+                .append(invoiceCounter.getAndIncrement())
                 .append("\nData zamówienia: ").append(order.getOrderDate().format(DATE_FORMATTER))
                 .append("\n----------------\n");
         invoiceBuilder.append("Klient: ").append(order.getClient()).append("\n");
