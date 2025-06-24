@@ -16,12 +16,14 @@ public class OnlineShop {
     Cart cart;
     OrderProcessor orderProcessor;
     ProductManager productManager;
+    OrderPersistenceService orderPersistenceService;
 
     public OnlineShop() {
         scanner = new Scanner(System.in);
         cart = new Cart();
         orderProcessor = new OrderProcessor();
         productManager = new ProductManager();
+        orderPersistenceService = new OrderPersistenceService();
 
         productManager.loadInitialProducts();
 
@@ -140,6 +142,7 @@ public class OnlineShop {
 
             System.out.println("\n=== Twoja faktura ===");
             System.out.println(invoice);
+            orderPersistenceService.saveOrderToFile(order);
 
             for (ClientItems item : cart.getCartItems()) {
                 int productId = item.getFinalProduct().getProduct().getId();
@@ -148,6 +151,7 @@ public class OnlineShop {
             }
 
             System.out.println(cart.placeOrder());
+
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

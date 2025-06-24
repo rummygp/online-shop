@@ -1,0 +1,9 @@
+=== Zamówienie ===
+ID zamówienia: 06f3a2f2-77c2-41b2-afca-0a73bbdc703f
+Data zamówienia: 24.06.2025 15:44
+Klient: Adam  Mokrzycki, adres: Rybnik, e-mail: @.com, wiek: 23
+Produkty:
+- Airpods, ilość: 2, cena końcowa: 1199.98 zł
+Suma: 1199.98 zł
+----------------------------
+
