@@ -49,6 +49,7 @@ public class OnlineShop {
                 default -> System.out.println("Nieprawidłowa opcja, spróbuj ponownie.");
             }
         }
+        scanner.close();
     }
 
     private void displayProducts() {
