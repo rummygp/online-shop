@@ -15,6 +15,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
+/**
+ * Główna klasa aplikacji sklepu internetowego.
+ * Odpowiada za obsługę interfejsu tekstowego, zarządzanie koszykiem, zamówieniami i produktami.
+ */
 public class OnlineShop {
     Scanner scanner;
     Cart cart;
@@ -23,6 +27,9 @@ public class OnlineShop {
     OrderPersistenceService orderPersistenceService;
     DiscountService discountService;
 
+    /**
+     * Konstruktor klasy inicjalizujący niezbędne komponenty oraz uruchamiający pętlę menu.
+     */
     public OnlineShop() {
         scanner = new Scanner(System.in);
         cart = new Cart();
@@ -61,6 +68,9 @@ public class OnlineShop {
         scanner.close();
     }
 
+    /**
+     * Wyświetla listę dostępnych produktów w sklepie.
+     */
     private void displayProducts() {
         System.out.println("\n=== Lista produktów ===");
         for (Product product : productManager.getAllProducts()) {
@@ -68,6 +78,10 @@ public class OnlineShop {
         }
     }
 
+    /**
+     * Pozwala dodać produkt do koszyka wraz z konfiguracją oraz wyborem ilości.
+     * Weryfikuje dostępność produktu i poprawność danych wejściowych.
+     */
     private void addProductToCart() {
         try {
             displayProducts();
@@ -114,6 +128,9 @@ public class OnlineShop {
         }
     }
 
+    /**
+     * Wyświetla zawartość koszyka oraz łączną wartość produktów.
+     */
     private void showCart() {
         System.out.println("\n=== Zawartość koszyka ===");
         if (cart.getCartItems().isEmpty()) {
@@ -129,6 +146,11 @@ public class OnlineShop {
         System.out.println("Łączna wartość koszyka: " + cart.getTotalValue() + " zł");
     }
 
+    /**
+     * Umożliwia złożenie zamówienia przez podanie danych klienta.
+     * Oblicza cenę końcową z uwzględnieniem ewentualnych rabatów.
+     * Przetwarza zamówienie asynchronicznie i aktualizuje stan magazynu.
+     */
     private void placeOrder() {
         try {
             System.out.println("\n=== Składanie zamówienia ===");
