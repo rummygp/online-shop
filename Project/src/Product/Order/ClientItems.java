@@ -1,12 +1,12 @@
 package Product.Order;
 
-import Product.ConfiguratedProduct;
+import Product.Core.ConfiguratedProduct;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 
 public class ClientItems {
-    private ConfiguratedProduct finalProduct;
+    private final ConfiguratedProduct finalProduct;
     private int quantity;
 
     public ClientItems(ConfiguratedProduct finalProduct, int quantity) {
@@ -16,10 +16,6 @@ public class ClientItems {
 
     public ConfiguratedProduct getFinalProduct() {
         return finalProduct;
-    }
-
-    public void setFinalProduct(ConfiguratedProduct finalProduct) {
-        this.finalProduct = finalProduct;
     }
 
     public int getQuantity() {

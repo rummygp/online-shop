@@ -2,7 +2,8 @@ package Product.Manager;
 
 import Product.Exceptions.ProductAlreadyExistException;
 import Product.Exceptions.ProductNotExistException;
-import Product.Product;
+import Product.Core.Product;
+import Product.Core.Storage;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +12,10 @@ import java.util.Optional;
 
 public class ProductManager {
     private final Map<Integer, Product> productMap = new HashMap<>();
+
+    public void loadInitialProducts() {
+        Storage.getInitialProducts().forEach(this::addProduct);
+    }
 
     public void addProduct(Product product) {
         if (productMap.containsKey(product.getId())) {
@@ -30,6 +35,13 @@ public class ProductManager {
             throw new ProductNotExistException("Produkt o podanym ID, nie istnieje");
         }
         productMap.put(id, updatedProduct);
+    }
+
+    public void reduceProductQuantity(int productId, int quantity) {
+        Product product = getProductById(productId)
+                .orElseThrow(() -> new IllegalArgumentException("Produkt o podanym ID nie istnieje."));
+
+        product.setQuantity(product.getQuantity() - quantity);
     }
 
     public List<Product> getAllProducts() {

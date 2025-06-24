@@ -1,4 +1,4 @@
-package Product;
+package Product.Core;
 
 import Configuration.ConfigurationInterfaces.ConfigurableOptions;
 import Product.Elements.ProductFeatures;
@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class ConfiguratedProduct {
     private final Product product;
@@ -37,8 +38,16 @@ public class ConfiguratedProduct {
         return product;
     }
 
-    public Map<ProductFeatures, ConfigurableOptions> getSelectedOptions() {
-        return selectedOptions;
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        ConfiguratedProduct that = (ConfiguratedProduct) o;
+        return Objects.equals(product, that.product) && Objects.equals(selectedOptions, that.selectedOptions);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(product, selectedOptions);
     }
 
     @Override
@@ -46,4 +55,5 @@ public class ConfiguratedProduct {
         return product.getName() + " " + selectedOptions.values();
     }
 }
+
 

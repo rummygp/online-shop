@@ -1,14 +1,13 @@
 package Product.Order;
 
-import Product.ConfiguratedProduct;
+import Product.Core.ConfiguratedProduct;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 public class Cart {
-    private List<ClientItems> cartItems;
+    private final List<ClientItems> cartItems;
 
     public Cart() {
         this.cartItems = new ArrayList<>();
@@ -39,7 +38,7 @@ public class Cart {
 
     public String placeOrder() {
         if (cartItems.isEmpty()) {
-            throw new NoSuchElementException("Koszyk jest pusty. Nie można złożyć zamówienia.");
+            throw new IllegalArgumentException("Koszyk jest pusty. Nie można złożyć zamówienia.");
         }
         cartItems.clear();
         return "Zamówienie zostało złożone. Koszyk jest pusty";

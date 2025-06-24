@@ -1,4 +1,4 @@
-package Product;
+package Product.Core;
 
 import Configuration.ConfigurationInterfaces.ConfigurableOptions;
 import Configuration.ConfigurationModels.*;

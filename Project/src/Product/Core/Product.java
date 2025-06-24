@@ -1,4 +1,4 @@
-package Product;
+package Product.Core;
 
 import Product.Elements.ProductFeatures;
 import Product.Elements.ProductType;
@@ -8,11 +8,11 @@ import java.util.List;
 
 public class Product {
     private final int id;
-    private String name;
-    private BigDecimal price;
+    private final String name;
+    private final BigDecimal price;
     private int quantity;
-    private ProductType productType;
-    private List<ProductFeatures> configurableFeatures;
+    private final ProductType productType;
+    private final List<ProductFeatures> configurableFeatures;
 
     public Product(int id, String name, BigDecimal price, int quantity, ProductType productType, List<ProductFeatures> configurableFeatures) {
         this.id = id;
@@ -31,16 +31,8 @@ public class Product {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public BigDecimal getPrice() {
         return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
     }
 
     public int getQuantity() {
@@ -55,20 +47,12 @@ public class Product {
         return productType;
     }
 
-    public void setProductType(ProductType productType) {
-        this.productType = productType;
-    }
-
     public List<ProductFeatures> getConfigurableFeatures() {
         return configurableFeatures;
     }
 
-    public void setConfigurableFeatures(List<ProductFeatures> configurableFeatures) {
-        this.configurableFeatures = configurableFeatures;
-    }
-
     @Override
     public String toString() {
-        return "Id: "+ id + " " + name + " " + price + "zł\n";
+        return "Id: "+ id + " " + name + " " + price + "zł | Ilość: " + quantity + " sztuk\n";
     }
 }

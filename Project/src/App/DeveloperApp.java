@@ -1,8 +1,8 @@
 package App;
 
 import Product.Manager.ProductManager;
-import Product.Product;
-import Product.Storage;
+import Product.Core.Product;
+import Product.Core.Storage;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -12,7 +12,7 @@ public class DeveloperApp {
     public static void main(String[] args) {
         ProductManager productManager = new ProductManager();
 
-        List<Product> products = Storage.productsList();
+        List<Product> products = Storage.getInitialProducts();
         products.forEach(productManager::addProduct);
 
         System.out.println("Lista dostępnych produktów");
