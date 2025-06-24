@@ -6,6 +6,7 @@ import Product.Order.Order;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 public class OrderPersistenceService {
@@ -17,7 +18,7 @@ public class OrderPersistenceService {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
             writer.write("=== Zamówienie ===\n");
             writer.write("ID zamówienia: " + order.getOrderId() + "\n");
-            writer.write("Data zamówienia: " + order.getOrderDate().format(DATE_FORMATTER) + "\n");
+            writer.write("Data zamówienia: " + order.getOrderDate().atZone(ZoneId.systemDefault()).format(DATE_FORMATTER) + "\n");
             writer.write("Klient: " + order.getClient() + "\n");
             writer.write("Produkty:\n");
 

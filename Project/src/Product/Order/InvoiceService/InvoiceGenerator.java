@@ -3,6 +3,8 @@ package Product.Order.InvoiceService;
 import Product.Order.ClientItems;
 import Product.Order.Order;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -15,9 +17,12 @@ public class InvoiceGenerator {
 
 
         invoiceBuilder.append("Faktura nr: FV/")
-                .append(invoiceCounter.getAndIncrement())
-                .append("\nData zamówienia: ").append(order.getOrderDate().format(DATE_FORMATTER))
+                .append(invoiceCounter.getAndIncrement());
+
+        ZonedDateTime localTime = order.getOrderDate().atZone(ZoneId.systemDefault());
+        invoiceBuilder.append("\nData zamówienia: ").append(localTime.format(DATE_FORMATTER))
                 .append("\n----------------\n");
+
         invoiceBuilder.append("Klient: ").append(order.getClient()).append("\n");
 
         for (ClientItems item : order.getOrderedItems()) {

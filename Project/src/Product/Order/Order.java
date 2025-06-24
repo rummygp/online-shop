@@ -1,7 +1,7 @@
 package Product.Order;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
@@ -10,7 +10,7 @@ public class Order {
     private final Person client;
     private final List<ClientItems> orderedItems;
     private final BigDecimal totalPrice;
-    private final LocalDateTime orderDate;
+    private final Instant orderDate;
 
     public Order(Person client, List<ClientItems> orderedItems, BigDecimal totalPrice) {
         if (client == null) {
@@ -26,7 +26,7 @@ public class Order {
         this.client = client;
         this.orderedItems = List.copyOf(orderedItems);
         this.totalPrice = totalPrice;
-        this.orderDate = LocalDateTime.now();
+        this.orderDate = Instant.now();
     }
 
     public String getOrderId() {
@@ -37,7 +37,7 @@ public class Order {
         return client;
     }
 
-    public LocalDateTime getOrderDate() {
+    public Instant getOrderDate() {
         return orderDate;
     }
 

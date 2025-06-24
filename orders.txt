@@ -16,3 +16,30 @@ Produkty:
 Suma: 2789.9910 zł
 ----------------------------
 
+=== Zamówienie ===
+ID zamówienia: 4b3a6d72-57cd-4ab9-ad48-ee45b49287e7
+Data zamówienia: 24.06.2025 18:20
+Klient: Adam Mokrzycki, adres: s, e-mail: s, wiek: 23
+Produkty:
+- iPhone, ilość: 1, cena końcowa: 3299.99 zł
+Suma: 2969.99 zł
+----------------------------
+
+=== Zamówienie ===
+ID zamówienia: 321a78b9-11e9-415a-b210-429799e43f1a
+Data zamówienia: 24.06.2025 18:22
+Klient: Adam xd Mok, adres: 2, e-mail: ads, wiek: 23
+Produkty:
+- Airpods, ilość: 5, cena końcowa: 2999.95 zł
+Suma: 2699.96 zł
+----------------------------
+
+=== Zamówienie ===
+ID zamówienia: 3108a596-b532-4a82-87bb-7e91a4b706b6
+Data zamówienia: 24.06.2025 18:22
+Klient: ADam test, adres: s, e-mail: s, wiek: 23
+Produkty:
+- Airpods, ilość: 1, cena końcowa: 599.99 zł
+Suma: 599.99 zł
+----------------------------
+
