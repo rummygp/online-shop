@@ -8,7 +8,9 @@ import Product.Manager.ProductManager;
 import Product.Order.*;
 import Product.Order.InvoiceService.OrderPersistenceService;
 import Product.Order.InvoiceService.OrderProcessor;
+import Product.Promotion.DiscountService;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
@@ -19,6 +21,7 @@ public class OnlineShop {
     OrderProcessor orderProcessor;
     ProductManager productManager;
     OrderPersistenceService orderPersistenceService;
+    DiscountService discountService;
 
     public OnlineShop() {
         scanner = new Scanner(System.in);
@@ -26,6 +29,7 @@ public class OnlineShop {
         orderProcessor = new OrderProcessor();
         productManager = new ProductManager();
         orderPersistenceService = new OrderPersistenceService();
+        discountService = new DiscountService();
 
         productManager.loadInitialProducts();
 
@@ -140,7 +144,18 @@ public class OnlineShop {
             int age = Integer.parseInt(scanner.nextLine());
 
             Person person = new Person(name, lastName, address, email, age);
-            Order order = new Order(person, cart.getCartItems());
+
+            BigDecimal totalPrice = cart.getTotalValue();
+            BigDecimal discountedPrice = discountService.applyDiscount(totalPrice);
+
+            if (discountedPrice.compareTo(totalPrice) < 0) {
+                System.out.println("Cena przed rabatem: " + totalPrice + " zł");
+                System.out.println("Cena po rabacie: " + discountedPrice + " zł");
+            } else {
+                System.out.println("Cena całkowita: " + discountedPrice + " zł");
+            }
+
+            Order order = new Order(person, cart.getCartItems(), discountedPrice);
 
             orderProcessor.processOrderAsync(order, invoice -> {
                 System.out.println("\n=== Twoja faktura ===");

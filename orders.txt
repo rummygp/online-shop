@@ -7,3 +7,12 @@ Produkty:
 Suma: 1199.98 zł
 ----------------------------
 
+=== Zamówienie ===
+ID zamówienia: b8e8a798-c509-41dc-a479-c01482c97120
+Data zamówienia: 24.06.2025 17:56
+Klient: Adam Mokrzycki, adres: s, e-mail: s, wiek: 23
+Produkty:
+- Lenovo, ilość: 1, cena końcowa: 3099.99 zł
+Suma: 2789.9910 zł
+----------------------------
+
