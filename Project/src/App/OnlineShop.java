@@ -6,6 +6,8 @@ import Product.Core.Product;
 import Product.Elements.ProductFeatures;
 import Product.Manager.ProductManager;
 import Product.Order.*;
+import Product.Order.InvoiceService.OrderPersistenceService;
+import Product.Order.InvoiceService.OrderProcessor;
 
 import java.util.List;
 import java.util.Optional;
@@ -51,6 +53,7 @@ public class OnlineShop {
                 default -> System.out.println("Nieprawidłowa opcja, spróbuj ponownie.");
             }
         }
+        orderProcessor.shutdown();
         scanner.close();
     }
 
@@ -138,11 +141,12 @@ public class OnlineShop {
 
             Person person = new Person(name, lastName, address, email, age);
             Order order = new Order(person, cart.getCartItems());
-            String invoice = orderProcessor.processOrder(order);
 
-            System.out.println("\n=== Twoja faktura ===");
-            System.out.println(invoice);
-            orderPersistenceService.saveOrderToFile(order);
+            orderProcessor.processOrderAsync(order, invoice -> {
+                System.out.println("\n=== Twoja faktura ===");
+                System.out.println(invoice);
+                System.out.println("Zamówienie zostało zapisane do pliku.\n");
+            });
 
             for (ClientItems item : cart.getCartItems()) {
                 int productId = item.getFinalProduct().getProduct().getId();
