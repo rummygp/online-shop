@@ -29,6 +29,7 @@ public class ProductManager {
             throw new ProductNotExistException("Produkt o podanym ID, nie istnieje");
         } productMap.remove(id);
     }
+
     public void updateProduct(Product updatedProduct) {
         Integer id = updatedProduct.getId();
         if (!productMap.containsKey(id)) {

@@ -43,3 +43,12 @@ Produkty:
 Suma: 599.99 zł
 ----------------------------
 
+=== Zamówienie ===
+ID zamówienia: 2f72a380-c8ee-43ce-9e8c-6b9c3f48b1e2
+Data zamówienia: 03.07.2025 14:34
+Klient: SAdam Mok, adres: ryb, e-mail: bt, wiek: 23
+Produkty:
+- iPhone, ilość: 2, cena końcowa: 7199.98 zł
+Suma: 6479.98 zł
+----------------------------
+
