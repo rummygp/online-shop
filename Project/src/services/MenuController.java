@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Klasa odpowiedzialna za obsługę menu oraz interakcję z użytkownikiem.
+ * Klasa odpowiedzialna za obsługę interfejsu tekstowego klienta.
+ * Umożliwia przeglądanie produktów, dodawanie ich do koszyka oraz składanie zamówień.
  */
 public class MenuController {
 
@@ -20,6 +21,15 @@ public class MenuController {
     OrderProcessor orderProcessor;
     DiscountService discountService;
 
+    /**
+     * Konstruktor inicjalizujący kontroler menu.
+     *
+     * @param scanner         obiekt do odczytu danych wejściowych
+     * @param cart            koszyk klienta
+     * @param productManager  menedżer produktów
+     * @param orderProcessor  przetwarzanie zamówień
+     * @param discountService obsługa rabatów
+     */
     public MenuController(Scanner scanner, Cart cart, ProductManager productManager, OrderProcessor orderProcessor, DiscountService discountService) {
         this.scanner = scanner;
         this.cart = cart;
@@ -28,6 +38,9 @@ public class MenuController {
         this.discountService = discountService;
     }
 
+    /**
+     * Uruchamia główne menu klienta i obsługuje jego wybory.
+     */
     public void runMenu() {
         boolean running = true;
 
@@ -52,7 +65,9 @@ public class MenuController {
         }
     }
 
-
+    /**
+     * Wyświetla listę dostępnych produktów w sklepie.
+     */
     private void displayProducts() {
         System.out.println("\n=== Lista produktów ===");
         for (Product product : productManager.getAllProducts()) {
@@ -60,6 +75,10 @@ public class MenuController {
         }
     }
 
+    /**
+     * Pozwala dodać produkt do koszyka wraz z konfiguracją.
+     * Weryfikuje poprawność danych i dostępność produktu.
+     */
     private void addProductToCart() {
         try {
             displayProducts();
@@ -106,6 +125,9 @@ public class MenuController {
         }
     }
 
+    /**
+     * Wyświetla zawartość koszyka klienta.
+     */
     private void showCart() {
         System.out.println("\n=== Zawartość koszyka ===");
         if (cart.getCartItems().isEmpty()) {
@@ -121,6 +143,10 @@ public class MenuController {
         System.out.println("Łączna wartość koszyka: " + cart.getTotalValue() + " zł");
     }
 
+    /**
+     * Umożliwia złożenie zamówienia przez podanie danych klienta.
+     * Uwzględnia naliczanie ewentualnego rabatu.
+     */
     private void placeOrder() {
         try {
             System.out.println("\n=== Składanie zamówienia ===");
