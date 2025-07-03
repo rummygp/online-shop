@@ -79,3 +79,12 @@ Produkty:
 Suma: 1199.98 zł
 ----------------------------
 
+=== Zamówienie ===
+ID zamówienia: cb2c5bf5-d7bb-4d7f-95e8-392222758541
+Data zamówienia: 03.07.2025 15:16
+Klient: a a, adres: a, e-mail: a, wiek: 22
+Produkty:
+- Airpods, ilość: 3, cena końcowa: 1799.97 zł
+Suma: 1799.97 zł
+----------------------------
+

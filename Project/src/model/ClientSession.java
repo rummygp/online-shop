@@ -1,7 +1,9 @@
-package services;
+package model;
 
 import manager.ProductManager;
-import model.Cart;
+import services.DiscountService;
+import services.MenuController;
+import services.OrderProcessor;
 
 import java.util.Scanner;
 
@@ -18,8 +20,8 @@ public class ClientSession {
     private final DiscountService discountService;
     private final MenuController menuController;
 
-    public ClientSession(ProductManager productManager, OrderProcessor orderProcessor, DiscountService discountService) {
-        this.scanner = new Scanner(System.in);
+    public ClientSession(Scanner scanner, ProductManager productManager, OrderProcessor orderProcessor, DiscountService discountService) {
+        this.scanner = scanner;
         this.cart = new Cart();
         this.productManager = productManager;
         this.orderProcessor = orderProcessor;
@@ -30,7 +32,6 @@ public class ClientSession {
 
     public void start() {
         menuController.runMenu();
-        scanner.close();
     }
 }
 
