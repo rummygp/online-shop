@@ -14,7 +14,7 @@ public class Storage {
                         List.of(ProductFeatures.RAM, ProductFeatures.PROCESSOR)),
                 new Product(2, "iPhone", new BigDecimal("2999.99"), 10, ProductType.SMARTPHONE,
                         List.of(ProductFeatures.COLOR, ProductFeatures.ADDITIONALACCRESSORIES, ProductFeatures.BATTERYCAPACITY)),
-                new Product(3, "Airpods", new BigDecimal("599.99"), 10, ProductType.ELECTRONICS, null)
+                new Product(3, "Airpods", new BigDecimal("599.99"), 10, ProductType.ELECTRONICS, List.of())
         );
     }
 }

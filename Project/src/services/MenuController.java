@@ -77,19 +77,19 @@ public class MenuController {
 
             ConfiguratedProduct config = new ConfiguratedProduct(selectedProduct);
 
-            Optional.ofNullable(selectedProduct.getConfigurableFeatures())
-                    .ifPresent(features -> {
-                        for (ProductFeatures feature : features) {
-                            List<ConfigurableOptions> options = config.getOptionsForFeature(feature);
-                            System.out.println("Wybierz opcję dla: " + feature.getLabel());
-                            for (int i = 0; i < options.size(); i++) {
-                                System.out.println((i + 1) + ". " + options.get(i).getLabel() + " (" + options.get(i).getAdditionalPrice() + "zł)");
-                            }
+            List<ProductFeatures> features = selectedProduct.getConfigurableFeatures();
+            if (!features.isEmpty()) {
+                for (ProductFeatures feature : features) {
+                    List<ConfigurableOptions> options = config.getOptionsForFeature(feature);
+                    System.out.println("Wybierz opcję dla: " + feature.getLabel());
+                    for (int i = 0; i < options.size(); i++) {
+                        System.out.println((i + 1) + ". " + options.get(i).getLabel() + " (" + options.get(i).getAdditionalPrice() + "zł)");
+                    }
 
                             int choice = Integer.parseInt(scanner.nextLine());
                             config.selectOption(feature, options.get(choice - 1));
                         }
-                    });
+                    };
 
             System.out.println("Podaj ilość:");
             int quantity = Integer.parseInt(scanner.nextLine());
