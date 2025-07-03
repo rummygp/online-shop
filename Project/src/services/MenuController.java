@@ -29,9 +29,6 @@ public class MenuController {
         this.discountService = discountService;
     }
 
-    /**
-     * Uruchamia pętlę odpowiedzialną za wyświetlanie i obsługę menu sklepu.
-     */
     public void runMenu() {
         boolean running = true;
 
@@ -50,14 +47,12 @@ public class MenuController {
                 case "2" -> addProductToCart();
                 case "3" -> showCart();
                 case "4" -> placeOrder();
-                case "5" -> {
-                    System.out.println("Do widzenia!");
-                    running = false;
-                }
+                case "5" -> running = false;
                 default -> System.out.println("Nieprawidłowa opcja, spróbuj ponownie.");
             }
         }
     }
+
 
     private void displayProducts() {
         System.out.println("\n=== Lista produktów ===");

@@ -52,3 +52,30 @@ Produkty:
 Suma: 6479.98 zł
 ----------------------------
 
+=== Zamówienie ===
+ID zamówienia: 84a6655a-994a-456c-a93a-ac681e026f8d
+Data zamówienia: 03.07.2025 14:53
+Klient: ADam mok, adres: ryb, e-mail: bat, wiek: 23
+Produkty:
+- Airpods, ilość: 4, cena końcowa: 2399.96 zł
+Suma: 2159.96 zł
+----------------------------
+
+=== Zamówienie ===
+ID zamówienia: dbbefc3a-d739-4b4d-b1ad-8250ff412fda
+Data zamówienia: 03.07.2025 14:59
+Klient: a a, adres: a, e-mail: a, wiek: 22
+Produkty:
+- Airpods, ilość: 2, cena końcowa: 1199.98 zł
+Suma: 1199.98 zł
+----------------------------
+
+=== Zamówienie ===
+ID zamówienia: 95d6521c-f875-42e6-9287-7c3d698a8467
+Data zamówienia: 03.07.2025 15:01
+Klient: A A, adres: A, e-mail: A, wiek: 22
+Produkty:
+- Airpods, ilość: 2, cena końcowa: 1199.98 zł
+Suma: 1199.98 zł
+----------------------------
+

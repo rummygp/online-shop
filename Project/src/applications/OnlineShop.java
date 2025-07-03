@@ -1,49 +1,33 @@
 package applications;
 
 import manager.ProductManager;
-import model.Cart;
+import services.ClientSession;
 import services.DiscountService;
-import services.MenuController;
 import services.OrderPersistenceService;
 import services.OrderProcessor;
 
-import java.util.Scanner;
-
 /**
- * Główna klasa aplikacji sklepu internetowego.
- * Inicjalizuje komponenty i przekazuje je do kontrolera odpowiedzialnego za obsługę menu.
+ * Klasa reprezentująca ogólny stan sklepu internetowego.
+ * Zarządza zasobami globalnymi sklepu i uruchamia sesje klientów.
  */
 public class OnlineShop {
 
-    Scanner scanner;
-    Cart cart;
-    OrderProcessor orderProcessor;
-    ProductManager productManager;
-    OrderPersistenceService orderPersistenceService;
-    DiscountService discountService;
-    MenuController menuController;
+    private final ProductManager productManager;
+    private final OrderProcessor orderProcessor;
+    private final OrderPersistenceService orderPersistenceService;
+    private final DiscountService discountService;
 
-    /**
-     * Konstruktor inicjalizujący komponenty, ale bez uruchamiania logiki aplikacji.
-     */
     public OnlineShop() {
-        scanner = new Scanner(System.in);
-        cart = new Cart();
-        orderProcessor = new OrderProcessor();
         productManager = new ProductManager();
+        orderProcessor = new OrderProcessor();
         orderPersistenceService = new OrderPersistenceService();
         discountService = new DiscountService();
 
-        menuController = new MenuController(scanner, cart, productManager, orderProcessor, discountService);
+        productManager.loadInitialProducts();
     }
 
-    /**
-     * Uruchamia aplikację: wczytuje dane i startuje interfejs użytkownika.
-     */
-    public void start() {
-        productManager.loadInitialProducts();
-        menuController.runMenu();
-        orderProcessor.shutdown();
-        scanner.close();
+    public void startClientSession() {
+        ClientSession session = new ClientSession(productManager, orderProcessor, discountService);
+        session.start();
     }
 }
